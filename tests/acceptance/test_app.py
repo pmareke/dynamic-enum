@@ -1,3 +1,5 @@
+import json
+
 from expects import equal, expect
 from streamlit.testing.v1 import AppTest
 
@@ -14,3 +16,10 @@ class TestApp:
         expect(at.number_input[0].value).to(equal(18))
         expect(at.text_input[1].value).to(equal("ADDRESS"))
         expect(at.selectbox[0].value).to(equal("Spain"))
+
+        at.button[0].click()
+
+        app.run()
+
+        data = {"name": "NAME", "age": 18, "address": "ADDRESS", "country": "Spain"}
+        expect(at.json[0].value).to(equal(json.dumps(data)))
