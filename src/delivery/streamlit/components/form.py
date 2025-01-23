@@ -1,3 +1,4 @@
+import json
 from collections.abc import Callable
 
 import streamlit_pydantic as sp
@@ -14,4 +15,5 @@ class Form(Component):
     def render(self) -> None:
         data = sp.pydantic_form(key=__name__, model=self.model)
         if data:
-            self.callback(data.model_dump())
+            json_data = data.model_dump_json()
+            self.callback(json.loads(json_data))
