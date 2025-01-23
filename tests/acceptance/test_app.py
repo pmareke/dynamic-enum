@@ -17,7 +17,7 @@ class TestApp:
         expect(at.text_input[1].value).to(equal("ADDRESS"))
         expect(at.selectbox[0].value).not_to(be_none)
 
-    def test_submit_form(self) -> None:
+    def test_submit_the_form(self) -> None:
         app = AppTest.from_file("main.py")
 
         at = app.run()
