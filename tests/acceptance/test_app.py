@@ -17,8 +17,11 @@ class TestApp:
         expect(at.text_input[1].value).to(equal("ADDRESS"))
         expect(at.selectbox[0].value).to(equal("Spain"))
 
-        at.button[0].click()
+    def test_submit_the_form(self) -> None:
+        app = AppTest.from_file("main.py")
 
+        at = app.run()
+        at.button[0].click()
         app.run()
 
         data = json.loads(at.json[0].value)
