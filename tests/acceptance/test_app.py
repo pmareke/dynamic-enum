@@ -22,7 +22,7 @@ class TestApp:
 
         at = app.run()
         at.button[0].click()
-        app.run()
+        at = app.run()
 
         data = json.loads(at.json[0].value)
         expect(list(data.keys())).to(equal(["name", "age", "address", "country"]))
