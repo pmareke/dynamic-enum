@@ -21,5 +21,9 @@ class TestApp:
 
         app.run()
 
-        data = {"name": "NAME", "age": 18, "address": "ADDRESS", "country": "Spain"}
-        expect(at.json[0].value).to(equal(json.dumps(data)))
+        data = json.loads(at.json[0].value)
+        expect(list(data.keys())).to(equal(["name", "age", "address", "country"]))
+        expect(data["name"]).to(equal("NAME"))
+        expect(data["age"]).to(equal(18))
+        expect(data["address"]).to(equal("ADDRESS"))
+        expect(data["country"]).to(equal("Spain"))
