@@ -1,3 +1,5 @@
+import json
+
 from expects import be_none, equal, expect
 from streamlit.testing.v1 import AppTest
 
@@ -14,3 +16,14 @@ class TestApp:
         expect(at.number_input[0].value).to(equal(18))
         expect(at.text_input[1].value).to(equal("ADDRESS"))
         expect(at.selectbox[0].value).not_to(be_none)
+
+        at.button[0].click()
+
+        app.run()
+
+        data = json.loads(at.json[0].value)
+        expect(list(data.keys())).to(equal(["name", "age", "address", "country"]))
+        expect(data["name"]).to(equal("NAME"))
+        expect(data["age"]).to(equal(18))
+        expect(data["address"]).to(equal("ADDRESS"))
+        expect(data["country"]).not_to(be_none)

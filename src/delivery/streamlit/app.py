@@ -1,7 +1,6 @@
-import streamlit as st
-
 from src.delivery.streamlit.components.form import Form
 from src.delivery.streamlit.components.header import Header
+from src.delivery.streamlit.components.json import JSON
 from src.domain.component import Component
 from src.domain.models.form_model import FormModel
 
@@ -15,4 +14,5 @@ class App(Component):
         form.render()
 
     def _callback(self, data: dict) -> None:
-        st.json(data)
+        json = JSON(data)
+        json.render()
