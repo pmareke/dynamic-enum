@@ -7,7 +7,7 @@ from src.domain.models.form_model import FormModel
 
 class App(Component):
     def render(self) -> None:
-        header = Header("Form example for Dynamic Enums")
+        header = Header("Dynamic Enums")
         header.render()
 
         form = Form(self._callback, FormModel)
